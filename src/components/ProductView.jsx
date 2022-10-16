@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from "prop-types";
-import productData from '../assets/fake-data/products'
 import { useDispatch } from 'react-redux'
+
+import productData from '../assets/fake-data/products'
+import { addItem } from '../redux/shopping-cart/cartItemsSlide'
 import Button from "./Button";
 import numberWithCommas from '../utils/numberWithCommas'
 
@@ -53,22 +55,48 @@ const ProductView = props => {
 
     }, [product])
     const check = () => {
-        let res = true
         if (color === undefined) {
-            alert('Vui Lòng chọn màu sắc')
+            alert('Vui lòng chọn màu sắc!')
             return false
         }
+
         if (size === undefined) {
-            alert('Vui Lòng chọn kích Cỡ')
+            alert('Vui lòng chọn kích cỡ!')
             return false
         }
-    }
-    const addToCart = () => {
-        if (check()) console.log({ color, size, quantity })
+
+        return true
     }
 
+    const addToCart = () => {
+        if (check()) {
+            dispatch(addItem({
+                slug: product.slug,
+                color: color,
+                size: size,
+                quantity: quantity,
+                price: product.price
+            }))
+            alert("success")
+        }
+
+
+
+
+    }
+
+
     const goTocart = () => {
-        if (check()) props.history.push('./cart')
+        if (check()) {
+            dispatch(addItem({
+                slug: product.slug,
+                color: color,
+                size: size,
+                quantity: quantity,
+                price: product.price
+            }))
+            props.history.push('/cart')
+        }
     }
     return (
         <div className="product">
@@ -152,8 +180,8 @@ const ProductView = props => {
                     </div>
                 </div>
                 <div className="product__info__item">
-                    <Button onClick={() => addToCart()} size='sm'>Thêm vào giỏ</Button>
-                    <Button onClick={() => goTocart()} size='sm'>mua Ngay</Button>
+                    <Button onClick={() => addToCart()} size='sm' animeHover={true}>Thêm vào giỏ</Button>
+                    <Button onClick={() => goTocart()} size='sm' animeHover={true}>mua Ngay</Button>
                 </div>
             </div>
         </div>

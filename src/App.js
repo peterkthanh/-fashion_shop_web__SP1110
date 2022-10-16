@@ -4,7 +4,7 @@ import './sass/index.scss';
 
 function App() {
   return (
-    <div className=''>
+    <div>
       <Layout />
     </div>
   );

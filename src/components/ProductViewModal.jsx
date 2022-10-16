@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react'
 import productData from '../assets/fake-data/products'
 import ProductView from './ProductView';
 import Button from './Button';
+
 import { useSelector, useDispatch } from "react-redux";
 import { remove } from '../redux/product-modal/productModalSlice';
 
 function ProductViewModal(props) {
+
+
     const productSlug = useSelector((state) => state.productModal.value)
     const dispatch = useDispatch()
 
@@ -16,7 +19,8 @@ function ProductViewModal(props) {
 
     useEffect(() => {
         setProduct(productData.getProductBySlug(productSlug))
-    }, [productSlug]);
+    }, [productSlug])
+
 
     return (
         <div className={`product-view__modal ${product === undefined ? '' : 'active'}`}>

@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
+
 import reportWebVitals from './reportWebVitals';
 import './assets/boxicons-2.0.7/css/boxicons.min.css';
 import './sass/index.scss';
+
 import { store } from './redux/store';
 import { Provider } from 'react-redux'
 import App from './App';
@@ -17,7 +19,6 @@ root.render(
         <App />
       </Provider>
     </BrowserRouter>
-
   </React.StrictMode>
 );
 

@@ -42,8 +42,8 @@
   }
   &-animeHover:hover {
     transition: all 0.3s ease;
-    transform: translate(0) scale(1.2);
-    background-color: $main-color-2;
+    transform: translate(0) scale(1.1);
+    background-color: $main-color;
   }
 
   &-sm {
@@ -52,5 +52,8 @@
 
   &-sm &__txt {
     padding: 0.7rem 1.5rem;
+  }
+  &-block {
+    width: 100%;
   }
 }
